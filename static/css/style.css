@@ -1,0 +1,114 @@
+*{
+  text-decoration: none;
+  font-family: Playfair Display;
+}
+html,body{
+  margin:0;
+  padding:0;
+}
+header{
+  background: #F3F0EA;
+  padding: 20px 195px;
+  display: flex;
+  align-items: center;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+a.menu{
+  margin: 10px 10px 0 20px;
+  color: black;
+}
+main{
+  background: #fff;
+}
+.home{
+  background-image: url(image.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 210px 195px;
+}
+.logo{
+  font-weight: 900;
+  font-size: 36px;
+  color:black;
+  margin-right: 20px;
+}
+.mainthing, .title{
+  color:white;
+  width: 600px;
+}
+.mainthing{
+  font-size: 24px;
+}
+.title{
+  font-size: 40px;
+}
+.btn{
+  width: 200px;
+}
+p.card-title{
+  font-size: 22px;
+  color: #000;
+}
+p.card-title-post{
+  font-size: 32px;
+}
+.miniCard{
+  display: flex;
+  flex-direction: row;
+}
+.card-time, .card-count{
+  border: 1px solid #939393;
+  color: #939393;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.categories{
+  display: flex;
+  flex-direction: row;
+}
+.category{
+  padding-left: 195px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+a.phone, a.email{
+  color:black;
+}
+footer{
+  background: #F3F0EA;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 195px;
+}
+.form-control{
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 800px) {
+  *{
+    flex-wrap: wrap;
+  }
+  .title,.mainthing{
+    width: 200px;
+  }
+  .title{
+    font-size: 28px;
+  }
+  .mainthing{
+    font-size: 20px;
+  }
+  header, .home, footer{
+    padding: 20px;
+  }
+  a.menu{
+    margin: 0;
+  }
+}
