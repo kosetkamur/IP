@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 
+
 class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -12,16 +13,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         cat = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label=None, to_field_name="category")
-        fields = ['title', 'time_to_cook', 'count', 'image','slug', 'body', 'cat']
+        fields = '__all__'
 
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'time_to_cook': forms.TextInput(attrs={'class': 'form-control'}),
-            'image': forms.TextInput(attrs={'class': 'form-control'}),
-            'count': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
-        }
+        
 
     def clean_slug(self):
         new_slug = self.cleaned_data['slug'].lower()
