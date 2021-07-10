@@ -1,0 +1,35 @@
+{% extends 'blog/base_blog.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block title %}
+    Create Post - {{ block.super }}
+  {% endblock %}
+</head>
+<body>
+
+  {% block content %}
+    <form action="{% url 'post_create_url' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+          {% if field.errors %}
+            <div class="alert alert">
+              {{ field.errors }}
+            </div>
+          {% endif %}
+          {{ field.label }}
+          {{ field }}
+        </div>
+      {% endfor %}
+      <button type="submit" name="button" class="btn">Create post</button>
+
+    </form>
+  {% endblock %}
+
+</body>
+</html>

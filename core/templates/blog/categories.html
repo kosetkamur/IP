@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class='categories'>
+        <div class='categories__column'>
+            <ul>
+            {% if cat_selected == 0 %}
+                <li class='selected cat_all'>Все категории</li>
+            {% else %}
+                <li><a href="{% url 'categories' %}" class='cat_all'>Все категории</a></li>
+            {% endif %}
+
+            {% for c in cats %}
+                {% if c.pk == cat_selected %}
+                    <li class='selected cat'>{{ c.category }}</li>
+                {% else %}
+                    <li><a href='{{ c.get_absolute_url}}' class='cat'>{{ c.category }}</a></li>
+                {% endif %}
+            {% endfor %}
+            
+            {% for c in dishes %}
+            {% if c.pk == dish_selected %}
+                <li class='selected cat'>{{ c.viewDish }}</li>
+            {% else %}
+                <li><a href='{{ c.get_absolute_url }}' class='cat'>{{ c.viewDish }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            </ul>
+        </div>
+        <div class='categories__columnRec'>
+            {% for post in posts %}
+
+            <div class="categories__columnRec--card">
+                <a href="{{ post.get_detail_url }}" >
+                <p class="card-title">{{ post.title }}</p>
+                <div>
+                    {% if post.image %}
+                        <img class='img' src='{{ post.image.url }}'>
+                    {% endif %}
+                </div>
+                <div class='categories__columnRec--miniCard'>
+                  <p class='card-time'>{{ post.time_to_cook }} мин</p>
+                  <p class='card-count'>{{ post.count }} порции</p>
+                </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+
+{% endblock %}
+
+

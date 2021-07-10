@@ -1,0 +1,17 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block content %}
+
+<h1 class='review_title'>Отзывы</h1>
+
+    {% for comment in commentaries %}
+
+            <div class='review'>
+                  <p class='review_author'><b>{{ comment.author }}</b></p>
+                  <p class='review_comment'>{{ comment.comment }}</p>
+                  <p class='review_tag'>{{ comment.tag_author }}</p>
+                  
+            </div>
+
+    {% endfor %}
+{% endblock %}

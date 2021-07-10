@@ -1,0 +1,21 @@
+{% extends 'blog/base_blog.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
+<body>
+    {% block content %}
+      <section>
+        <button>Отзывы</button>
+        <div>
+          <p>{{ human }}</p>
+          <p>{{ status }}</p>
+        </div>
+      </section>
+    {% endblock %}
+</body>
+</html>

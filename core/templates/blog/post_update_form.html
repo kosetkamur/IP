@@ -1,0 +1,31 @@
+{% extends 'blog/base_blog.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+  {% block content %}
+    <form action="{{ post.get_update_url }}" method="post">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+
+          {% if field.errors %}
+            <div> {{ field.errors }}</div>
+          {% endif %}
+          
+          <div class='form-group__label'>{{ field.label }}</div>
+          <div class='form-group__field'>{{ field }}</div>
+
+        </div>
+      {% endfor %}
+
+      <button type="submit" name="button" class="btn_update">Изменить</button>
+    </form>
+  {% endblock %}
+</body>
+</html>
