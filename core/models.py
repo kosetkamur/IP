@@ -15,7 +15,7 @@ def gen_slug(s):
 class Post(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Название')
     time_to_cook = models.SmallIntegerField(default=0, db_index=True, verbose_name='Время приготовления')
-    image = models.ImageField(null=True,blank=True,  verbose_name='Изображение', max_length=200)
+    # image = models.ImageField(null=True,blank=True,  verbose_name='Изображение', max_length=200)
     count = models.SmallIntegerField(default=0, db_index=True, verbose_name='Количество порций')
     body = models.TextField(blank=True, db_index=True, verbose_name='Описание рецепта')
     slug = models.SlugField(max_length=150, blank=True, unique=True, verbose_name="URL")

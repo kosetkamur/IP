@@ -23,4 +23,5 @@ urlpatterns = [
     path('', redirect_receipt),
     path('admin/', admin.site.urls),
     path('receipt/', include('core.urls')),
+    path('api/', include('api_rest.urls')),
 ]

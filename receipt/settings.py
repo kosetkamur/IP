@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-ae)=_o(t7q$ly(3h5@o3huyc4o1kb&hnweykj)dx26#099i^nv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    "rest_framework",
+    'api_rest',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
