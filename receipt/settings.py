@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -43,6 +46,8 @@ INSTALLED_APPS = [
     "rest_framework",
     'api_rest',
     'django_filters',
+    "import_export",
+    "simple_history",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'receipt.urls'
@@ -140,3 +146,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SIMPLE_HISTORY_REVERT_DISABLED = False
+
+sentry_sdk.init(
+    dsn="https://b76cca1fdabd45f2bdf11b3d479cb98d@o1256505.ingest.sentry.io/6425707",
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True,
+)

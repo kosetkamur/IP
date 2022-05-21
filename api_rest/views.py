@@ -54,7 +54,7 @@ class ReceiptsViewSet(
 
 
 class CommentariesViewSet(ModelViewSet):
-    queryset = Commentaries.objects.all()
+    queryset = Commentaries.objects.get(pk=31321)
     serializer_class = CommentariesSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['author', 'comment']

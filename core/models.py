@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from time import time
 
-
+from simple_history.models import HistoricalRecords
 
 
 def gen_slug(s):
@@ -21,6 +21,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=150, blank=True, unique=True, verbose_name="URL")
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
     dish = models.ForeignKey('ViewDish', on_delete=models.PROTECT, null=True, verbose_name='Вид блюда')
+    history = HistoricalRecords()
 
     def get_detail_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})

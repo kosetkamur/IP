@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('receipt/', include('core.urls')),
     path('api/', include('api_rest.urls')),
+    path('sentry-debug/', include('api_rest.urls')),
 ]
